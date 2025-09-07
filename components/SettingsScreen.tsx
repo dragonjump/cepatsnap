@@ -30,21 +30,23 @@ const SettingsScreen: React.FC = () => {
       <h2 className="text-3xl font-bold text-[#1A202C]">Settings & Compliance</h2>
       
       <SettingSection title="Profile">
-        <div className="flex items-center space-x-4">
-          <img src="https://i.pravatar.cc/64" alt="User" className="w-16 h-16 rounded-full" />
-          <div>
-            <p className="text-lg font-semibold">Dr. Amelia Chen</p>
-            <p className="text-[#718096]">General Dermatology</p>
-            <p className="text-sm text-[#0066CC]">Central City Medical Clinic</p>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4 opacity-50 pointer-events-none">
+            <img src="https://i.pravatar.cc/64" alt="User" className="w-16 h-16 rounded-full" />
+            <div>
+              <p className="text-lg font-semibold">Dr. Amelia Chen</p>
+              <p className="text-[#718096]">General Dermatology</p>
+              <p className="text-sm text-[#0066CC]">Central City Medical Clinic</p>
+            </div>
           </div>
+          <span className="text-xs font-semibold bg-gray-100 text-gray-500 px-2 py-1 rounded-full select-none">COMING SOON</span>
         </div>
-        <button className="text-[#0066CC] font-semibold text-sm hover:underline">Edit Profile</button>
       </SettingSection>
 
       <SettingSection title="Image Quality">
         <div>
           <label htmlFor="resolution" className="block text-sm font-medium text-[#1A202C]">Default Resolution</label>
-          <select id="resolution" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-[#E2E8F0] focus:outline-none focus:ring-[#0066CC] focus:border-[#0066CC] sm:text-sm rounded-md">
+          <select id="resolution" className="mt-1 block w-full pl-3 pr-10 py-2 text-base bg-white text-[#1A202C] border border-[#E2E8F0] focus:outline-none focus:ring-[#0066CC] focus:border-[#0066CC] sm:text-sm rounded-md">
             <option>Standard (1920x1080)</option>
             <option>High (3840x2160)</option>
             <option>Original</option>

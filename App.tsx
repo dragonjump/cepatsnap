@@ -1,8 +1,8 @@
-
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Screen, MedicalRecord, EnhancementPreset } from './types';
 import SplashScreen from './components/SplashScreen';
 import Dashboard from './components/Dashboard';
+import LiveCaptureScreen from './components/LiveCaptureScreen';
 import EnhancementScreen from './components/EnhancementScreen';
 import RecordsScreen from './components/RecordsScreen';
 import SettingsScreen from './components/SettingsScreen';
@@ -25,8 +25,16 @@ const App: React.FC = () => {
     setRecords(mockRecords);
   }, []);
 
-  const handleCaptureClick = () => {
+  const handleUploadClick = () => {
     fileInputRef.current?.click();
+  };
+
+  const handleLiveCaptureClick = () => {
+    setScreen(Screen.LIVE_CAPTURE);
+  };
+  
+  const handleViewRecordsClick = () => {
+    setScreen(Screen.RECORDS);
   };
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,6 +43,11 @@ const App: React.FC = () => {
       setCurrentImage({ file, url: URL.createObjectURL(file) });
       setScreen(Screen.ENHANCEMENT);
     }
+  };
+  
+  const handleImageSnap = (file: File) => {
+    setCurrentImage({ file, url: URL.createObjectURL(file) });
+    setScreen(Screen.ENHANCEMENT);
   };
 
   const handleSaveRecord = (record: Omit<MedicalRecord, 'id' | 'timestamp'>) => {
@@ -57,32 +70,41 @@ const App: React.FC = () => {
     switch (screen) {
       case Screen.SPLASH:
         return <SplashScreen onFinished={() => setScreen(Screen.DASHBOARD)} />;
+      case Screen.LIVE_CAPTURE:
+        return <LiveCaptureScreen onImageSnap={handleImageSnap} onCancel={() => setScreen(Screen.DASHBOARD)} />;
       case Screen.ENHANCEMENT:
         if (currentImage) {
           return <EnhancementScreen image={currentImage} onSave={handleSaveRecord} onCancel={handleEnhancementCancel} />;
         }
-        return <Dashboard onCaptureClick={handleCaptureClick} recentRecords={records.slice(0, 4)} />; // Fallback
+        return <Dashboard onLiveCaptureClick={handleLiveCaptureClick} onUploadClick={handleUploadClick} onViewRecordsClick={handleViewRecordsClick} />; // Fallback
       case Screen.RECORDS:
         return <RecordsScreen records={records} />;
       case Screen.SETTINGS:
         return <SettingsScreen />;
       case Screen.DASHBOARD:
       default:
-        return <Dashboard onCaptureClick={handleCaptureClick} recentRecords={records.slice(0, 4)} />;
+        return <Dashboard onLiveCaptureClick={handleLiveCaptureClick} onUploadClick={handleUploadClick} onViewRecordsClick={handleViewRecordsClick} />;
     }
   };
 
   if (screen === Screen.SPLASH) {
     return <SplashScreen onFinished={() => setScreen(Screen.DASHBOARD)} />;
   }
+  
+  const isFullScreen = screen === Screen.LIVE_CAPTURE;
+
+  if (isFullScreen) {
+    return renderScreen();
+  }
+
 
   return (
     <div className="min-h-screen bg-[#F8FAFB] text-[#1A202C]">
-      <Header onSettingsClick={() => setScreen(Screen.SETTINGS)} />
+      <Header onLogoClick={() => setScreen(Screen.DASHBOARD)} onSettingsClick={() => setScreen(Screen.SETTINGS)} />
       <main className="pb-24 pt-16 md:pt-20 px-4 md:px-8">
         {renderScreen()}
       </main>
-      <BottomNav activeScreen={screen} setScreen={setScreen} onCaptureClick={handleCaptureClick} />
+      <BottomNav activeScreen={screen} setScreen={setScreen} onCaptureClick={handleLiveCaptureClick} />
       <input
         type="file"
         ref={fileInputRef}
