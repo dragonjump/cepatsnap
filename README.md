@@ -12,9 +12,13 @@ View your app in AI Studio: https://ai.studio/apps/drive/1gKUkY-NCiYiwQ1BoHM0Vfq
 
 **Prerequisites:**  Node.js
 
-
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+2. Create a `.env.local` file with your API keys:
+   ```
+   GEMINI_API_KEY=your_gemini_api_key_here
+   VITE_ELEVENLABS_API_KEY=your_elevenlabs_api_key_here
+   VITE_ELEVENLABS_AGENT_ID=your_elevenlabs_agent_id_here
+   ```
 3. Run the app:
    `npm run dev`

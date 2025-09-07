@@ -36,7 +36,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeScreen, setScreen, onCaptur
         onClick={() => setScreen(Screen.DASHBOARD)}
       />
       
-      <button onClick={onCaptureClick} className="relative bottom-4 flex items-center justify-center w-16 h-16 rounded-full bg-[#0066CC] text-white shadow-lg shadow-[#0066CC]/50 transform hover:scale-105 transition-transform">
+      <button onClick={onCaptureClick} className="relative bottom-4 flex items-center justify-center w-32 h-16 rounded-full bg-[#0066CC] text-white shadow-lg shadow-[#0066CC]/50 transform hover:scale-105 transition-transform">
         <Icon name="camera" className="w-8 h-8" />
         <div className="absolute inset-0 rounded-full border-2 border-white/50 animate-pulse"></div>
       </button>

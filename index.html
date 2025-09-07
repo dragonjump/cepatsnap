@@ -27,19 +27,74 @@
       h1, h2, h3, h4, h5, h6 {
         font-family: 'Inter', 'Nunito Sans', sans-serif;
       }
+      
+      /* Markdown content styling */
+      .markdown-content h1, .markdown-content h2, .markdown-content h3, 
+      .markdown-content h4, .markdown-content h5, .markdown-content h6 {
+        font-weight: 600;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        color: #1A202C;
+      }
+      
+      .markdown-content h1 { font-size: 1.25rem; }
+      .markdown-content h2 { font-size: 1.125rem; }
+      .markdown-content h3 { font-size: 1rem; }
+      .markdown-content h4 { font-size: 0.875rem; }
+      
+      .markdown-content p {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+      }
+      
+      .markdown-content ul, .markdown-content ol {
+        margin-left: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+      
+      .markdown-content li {
+        margin-bottom: 0.25rem;
+      }
+      
+      .markdown-content strong {
+        font-weight: 600;
+        color: #1A202C;
+      }
+      
+      .markdown-content em {
+        font-style: italic;
+      }
+      
+      .markdown-content code {
+        background-color: #F1F5F9;
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.25rem;
+        font-family: 'Courier New', monospace;
+        font-size: 0.875rem;
+      }
+      
+      .markdown-content pre {
+        background-color: #F1F5F9;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin-bottom: 0.75rem;
+      }
+      
+      .markdown-content pre code {
+        background-color: transparent;
+        padding: 0;
+      }
+      
+      .markdown-content blockquote {
+        border-left: 4px solid #0066CC;
+        padding-left: 1rem;
+        margin-left: 0;
+        margin-bottom: 0.75rem;
+        font-style: italic;
+        color: #4A5568;
+      }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0",
-    "@elevenlabs/react": "https://esm.sh/@elevenlabs/react@^1.0.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
-    "react/": "https://aistudiocdn.com/react@^19.1.1/"
-  }
-}
-</script>
 </head>
   <body class="bg-[#F8FAFB]">
     <div id="root"></div>

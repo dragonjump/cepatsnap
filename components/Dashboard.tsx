@@ -8,8 +8,9 @@ interface DashboardProps {
 }
 
 const workflowSteps: { icon: 'microphone' | 'camera' | 'ruler' | 'save'; text: string }[] = [
-  { icon: 'microphone', text: '“Add a 2cm measurement...”' },
   { icon: 'camera', text: 'Capturing clear, enhanced image...' },
+  { icon: 'microphone', text: '“Do censor privacy redaction”' },
+  { icon: 'microphone', text: '“Add a 2cm measurement wound annotation and marker”' },
   { icon: 'ruler', text: 'Applying annotation overlay...' },
   { icon: 'save', text: 'Saved to patient record.' },
 ];
@@ -46,10 +47,10 @@ const Dashboard: React.FC<DashboardProps> = ({ onLiveCaptureClick, onUploadClick
       
       {/* Hero Text */}
       <h1 className="text-3xl md:text-4xl font-bold text-[#1A202C] mt-8">
-        AI-Powered Documentation, Instantly.
+      Fast  Compliant Medical Photography, Instantly.
       </h1>
       <p className="mt-4 max-w-xl text-lg text-[#718096]">
-        Capture, enhance, and annotate medical images with just your voice. Streamline your workflow in seconds.
+        Capture, analyze and enhance report-ready medical images in seconds.
       </p>
 
       {/* Action Buttons */}

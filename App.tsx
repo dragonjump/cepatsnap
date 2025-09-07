@@ -8,6 +8,7 @@ import RecordsScreen from './components/RecordsScreen';
 import SettingsScreen from './components/SettingsScreen';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
+import { Toaster } from 'react-hot-toast';
 
 const App: React.FC = () => {
   const [screen, setScreen] = useState<Screen>(Screen.SPLASH);
@@ -112,6 +113,7 @@ const App: React.FC = () => {
         accept="image/*"
         className="hidden"
       />
+      <Toaster />
     </div>
   );
 };
