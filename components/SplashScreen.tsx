@@ -50,11 +50,12 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinished }) => {
         <div className="text-center mt-4">
           <h1 className="text-4xl font-bold text-[#0066CC]">CepatSnap</h1>
           <p className="text-[#718096] mt-2">Dokumentasi medis dalam sekejap</p>
+          <p className="text-sm text-gray-400 mt-1">Medical documentation in a snap</p>
         </div>
       </div>
 
       <div className="absolute bottom-10 text-center">
-        <p className="text-sm text-[#718096]">Powered by AI</p>
+        <p className="text-sm text-[#718096]">Powered by Gemini and 11Labs</p>
       </div>
     </div>
   );

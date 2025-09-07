@@ -2,6 +2,7 @@
   "name": "CepatSnap",
   "description": "CepatSnap is an AI-powered medical image enhancement tool for healthcare professionals. It enables real-time photo capture, AI enhancement, and medical annotation through conversational interfaces.",
   "requestFramePermissions": [
-    "camera"
+    "camera",
+    "microphone"
   ]
 }

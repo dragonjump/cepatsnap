@@ -32,13 +32,15 @@ const getPromptForPreset = (preset: EnhancementPreset): string => {
 };
 
 export const generateImageAnalysis = async (imageFile: File, preset: EnhancementPreset): Promise<string> => {
+  const apiKey = typeof process !== 'undefined' && process.env ? process.env.API_KEY : undefined;
+
   try {
-    if (!process.env.API_KEY) {
+    if (!apiKey) {
       console.warn("API_KEY not found, returning mock data.");
       return new Promise(resolve => setTimeout(() => resolve(`This is a mock AI analysis for the "${preset}" preset. The analysis would describe key features relevant to the selected mode. For example, in Wound Care, it might mention tissue types and wound edges. (This is a simulated response)`), 1500));
     }
 
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey });
     const imagePart = await fileToGenerativePart(imageFile);
     const textPart = { text: getPromptForPreset(preset) };
     
