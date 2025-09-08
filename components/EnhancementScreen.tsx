@@ -432,9 +432,19 @@ const EnhancementScreen: React.FC<EnhancementScreenProps> = ({ image, onSave, on
                 className="w-full h-32 p-3 border border-[#E2E8F0] rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-[#0066CC] focus:border-transparent text-sm"
                 disabled={isLoading}
               />
-              <p className="text-xs text-[#718096] mt-2">
-                This prompt will be sent to the AI for image enhancement. You can edit it or use the preset buttons above.
-              </p>
+              <div className="flex items-center justify-between mt-3">
+                <p className="text-xs text-[#718096]">
+                  This prompt will be sent to the AI for image enhancement. You can edit it or use the preset buttons above.
+                </p>
+                <button
+                  onClick={() => handleEnhancement('custom', promptText.trim() || 'Enhance this medical image to improve overall quality and visibility for medical documentation.')}
+                  disabled={isLoading || !promptText.trim()}
+                  className="px-4 py-2 bg-[#0066CC] text-white text-sm font-medium rounded-lg hover:bg-[#0052A3] disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+                >
+                  <Icon name="lightning" className="w-4 h-4"/>
+                  {isLoading ? 'Processing...' : 'Enhance'}
+                </button>
+              </div>
             </div>
           )}
         </div>
